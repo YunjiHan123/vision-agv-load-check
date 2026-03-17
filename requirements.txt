@@ -5,3 +5,7 @@ pyyaml
 easyocr
 pytest
 matplotlib
+fastapi
+uvicorn
+python-multipart
+httpx
