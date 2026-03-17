@@ -1,0 +1,11 @@
+image_name,pred_count,pred_status,pred_lot
+img_001.jpg,2,normal,A10001
+img_002.jpg,2,normal,A10002
+img_003.jpg,4,shifted,A10033
+img_004.jpg,5,fallen,A10004
+img_005.jpg,3,tilted,A10005
+img_006.jpg,5,shifted,A10006
+img_007.jpg,3,normal,A10007
+img_008.jpg,4,shifted,A10888
+img_009.jpg,1,normal,A10009
+img_010.jpg,5,fallen,A10010

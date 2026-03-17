@@ -1,0 +1,11 @@
+image_name,true_count,true_status,true_lot,condition,notes
+img_001.jpg,2,normal,A10001,clear,baseline
+img_002.jpg,3,normal,A10002,clear,baseline
+img_003.jpg,4,normal,A10003,clear,baseline
+img_004.jpg,5,normal,A10004,clear,baseline
+img_005.jpg,3,tilted,A10005,clear,one book tilted
+img_006.jpg,4,tilted,A10006,clear,one book tilted
+img_007.jpg,3,shifted,A10007,clear,one book shifted sideways
+img_008.jpg,4,shifted,A10008,clear,one book shifted sideways
+img_009.jpg,2,fallen,A10009,clear,one book fallen
+img_010.jpg,5,fallen,A10010,clear,one book fallen
