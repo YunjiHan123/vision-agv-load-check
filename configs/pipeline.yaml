@@ -1,0 +1,21 @@
+project:
+  name: book_lot_vision
+  mode: local_cli
+
+paths:
+  weights_dir: models
+  sample_dir: data/samples
+  output_dir: data/processed
+
+pipeline:
+  steps:
+    - perspective_transform
+    - lot_label_detection
+    - label_count_to_book_count
+    - label_guided_book_segmentation
+    - anomaly_detection
+    - lot_ocr
+
+runtime:
+  save_visualizations: true
+  verbose: true

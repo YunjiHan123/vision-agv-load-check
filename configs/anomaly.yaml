@@ -1,0 +1,5 @@
+rules:
+  min_book_width_ratio: 0.6
+  max_book_tilt_degrees: 10
+  max_label_offset_ratio: 0.2
+  flag_overlapping_books: true

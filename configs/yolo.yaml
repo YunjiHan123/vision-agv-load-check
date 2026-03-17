@@ -1,0 +1,9 @@
+model:
+  task: detect
+  class_name: lot_label
+  weights: models/lot_label_yolo.pt
+
+inference:
+  confidence_threshold: 0.5
+  iou_threshold: 0.4
+  image_size: 1280
