@@ -12,11 +12,11 @@ from src.utils.status import normalize_status_label
 
 
 def test_char_accuracy_exact_match() -> None:
-    assert char_accuracy("A10001", "A10001") == 1.0
+    assert char_accuracy("001A|001B", "001A|001B") == 1.0
 
 
 def test_char_accuracy_partial_match() -> None:
-    assert char_accuracy("A10001", "A10099") == 4 / 6
+    assert char_accuracy("001A|001B", "001A|001C") == 8 / 9
 
 
 def test_status_normalization_merges_shifted_and_tilted() -> None:
