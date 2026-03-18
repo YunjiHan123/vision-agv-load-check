@@ -3,6 +3,7 @@ numpy
 ultralytics
 pyyaml
 easyocr
+paddleocr
 pytest
 matplotlib
 fastapi
