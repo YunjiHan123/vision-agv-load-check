@@ -8,10 +8,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 if str(BASE_DIR) not in sys.path:
     sys.path.insert(0, str(BASE_DIR))
 
+from src.utils.status import normalize_status_label
+
 GT_CSV = BASE_DIR / "data" / "ground_truth.csv"
 RESULT_CSV = BASE_DIR / "data" / "results.csv"
 FAILURE_CSV = BASE_DIR / "data" / "failure_cases.csv"
 PLOT_DIR = BASE_DIR / "data" / "plots"
+LOT_SEPARATOR = "|"
 
 
 def get_pyplot():
@@ -50,6 +53,14 @@ def char_accuracy(true_text: str, pred_text: str) -> float:
     return match_count / len(true_text)
 
 
+def split_lots(lot_text: str) -> list[str]:
+    return [token.strip() for token in lot_text.split(LOT_SEPARATOR) if token.strip()]
+
+
+def normalize_lots_text(lot_text: str) -> str:
+    return LOT_SEPARATOR.join(sorted(split_lots(lot_text)))
+
+
 def safe_div(numerator: float, denominator: float) -> float:
     return numerator / denominator if denominator else 0.0
 
@@ -61,8 +72,8 @@ def write_failure_cases(failure_cases: list[dict[str, str]]) -> None:
         "pred_count",
         "true_status",
         "pred_status",
-        "true_lot",
-        "pred_lot",
+        "true_lots",
+        "pred_lots",
         "count_match",
         "status_match",
         "lot_match",
@@ -184,15 +195,15 @@ def main() -> None:
 
         true_count = int(gt["true_count"])
         pred_count = int(pred["pred_count"])
-        true_status = gt["true_status"].strip()
-        pred_status = pred["pred_status"].strip()
-        true_lot = gt["true_lot"].strip()
-        pred_lot = pred["pred_lot"].strip()
+        true_status = normalize_status_label(gt["true_status"])
+        pred_status = normalize_status_label(pred["pred_status"])
+        true_lots = normalize_lots_text(gt["true_lots"])
+        pred_lots = normalize_lots_text(pred.get("pred_lots", pred.get("pred_lot", "")))
         status_totals[true_status] = status_totals.get(true_status, 0) + 1
 
         count_match = true_count == pred_count
         status_match = true_status == pred_status
-        lot_match = true_lot == pred_lot
+        lot_match = true_lots == pred_lots
 
         if count_match:
             count_exact_match += 1
@@ -215,7 +226,7 @@ def main() -> None:
 
         if lot_match:
             ocr_exact_match += 1
-        ocr_char_acc_sum += char_accuracy(true_lot, pred_lot)
+        ocr_char_acc_sum += char_accuracy(true_lots, pred_lots)
 
         if count_match and status_match and lot_match:
             end_to_end_success += 1
@@ -227,8 +238,8 @@ def main() -> None:
                     "pred_count": str(pred_count),
                     "true_status": true_status,
                     "pred_status": pred_status,
-                    "true_lot": true_lot,
-                    "pred_lot": pred_lot,
+                    "true_lots": true_lots,
+                    "pred_lots": pred_lots,
                     "count_match": str(count_match),
                     "status_match": str(status_match),
                     "lot_match": str(lot_match),
@@ -304,7 +315,7 @@ def main() -> None:
                 f"  - {failure['image_name']} "
                 f"(count: {failure['true_count']}->{failure['pred_count']}, "
                 f"status: {failure['true_status']}->{failure['pred_status']}, "
-                f"lot: {failure['true_lot']}->{failure['pred_lot']})"
+                f"lots: {failure['true_lots']}->{failure['pred_lots']})"
             )
     print("================================")
 

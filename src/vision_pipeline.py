@@ -4,6 +4,7 @@ from pathlib import Path
 from typing import Any
 
 from src.pipeline.run_pipeline import run_pipeline
+from src.utils.status import normalize_status_label
 
 
 def process_image(image_path: str | Path, config_path: str | Path | None = None) -> dict[str, Any]:
@@ -15,15 +16,15 @@ def process_image(image_path: str | Path, config_path: str | Path | None = None)
 
     anomalies = result.get("anomalies", [])
     lot_info = result.get("lot_info", [])
-    pred_lot = "UNKNOWN"
+    pred_lots_list: list[str] = []
 
     if lot_info and isinstance(lot_info, list):
-        first_item = lot_info[0]
-        if isinstance(first_item, dict):
-            pred_lot = str(first_item.get("lot", "UNKNOWN"))
+        for item in lot_info:
+            if isinstance(item, dict) and item.get("lot"):
+                pred_lots_list.append(str(item["lot"]))
 
     return {
         "pred_count": int(result.get("book_count", 0)),
-        "pred_status": "normal" if not anomalies else "abnormal",
-        "pred_lot": pred_lot,
+        "pred_status": normalize_status_label(str(result.get("predicted_status", "normal" if not anomalies else "misaligned"))),
+        "pred_lots": "|".join(pred_lots_list) if pred_lots_list else "UNKNOWN",
     }

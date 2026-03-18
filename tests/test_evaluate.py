@@ -8,6 +8,7 @@ if str(BASE_DIR) not in sys.path:
     sys.path.insert(0, str(BASE_DIR))
 
 from src.evaluate import char_accuracy
+from src.utils.status import normalize_status_label
 
 
 def test_char_accuracy_exact_match() -> None:
@@ -16,3 +17,9 @@ def test_char_accuracy_exact_match() -> None:
 
 def test_char_accuracy_partial_match() -> None:
     assert char_accuracy("A10001", "A10099") == 4 / 6
+
+
+def test_status_normalization_merges_shifted_and_tilted() -> None:
+    assert normalize_status_label("shifted") == "misaligned"
+    assert normalize_status_label("tilted") == "misaligned"
+    assert normalize_status_label("fallen") == "fallen"
