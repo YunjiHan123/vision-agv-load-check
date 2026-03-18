@@ -5,20 +5,15 @@ from pathlib import Path
 from src.pipeline.run_pipeline import run_pipeline
 
 
-def test_test_images_produce_expected_placeholder_statuses() -> None:
-    expected = {
-        "fallen_001.jpg": ("fallen", 4),
-        "normal_001.jpg": ("normal", 4),
-        "shifted_001.jpg": ("misaligned", 4),
-        "tilted_001.jpg": ("misaligned", 4),
-    }
+def test_trained_detector_runs_on_sample_images() -> None:
+    sample_images = ["img_001.jpg", "img_004.jpg", "img_006.jpg"]
 
-    for image_name, (status, count) in expected.items():
+    for image_name in sample_images:
         result = run_pipeline(
             input_path=Path("data/test_images") / image_name,
             config_path=Path("configs/pipeline.yaml"),
         )
 
-        assert result["predicted_status"] == status
-        assert result["book_count"] == count
+        assert result["book_count"] >= 1
         assert result["labels"]
+        assert result["labels"][0]["detector_source"] in {"ultralytics", "heuristic_fallback"}

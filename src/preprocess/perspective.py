@@ -8,6 +8,8 @@ import cv2
 import numpy as np
 import yaml
 
+from src.utils.io import load_image
+
 
 _SIDE_CAR_SUFFIXES = (
     ".perspective.yaml",
@@ -119,7 +121,7 @@ def apply_perspective_transform(input_path: Path, output_dir: Path | None = None
         result["status"] = "skipped_directory"
         return result
 
-    image = cv2.imread(str(input_path))
+    image = load_image(input_path)
     if image is None:
         result["status"] = "image_load_failed"
         return result
