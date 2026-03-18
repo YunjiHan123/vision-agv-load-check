@@ -1,6 +1,7 @@
 ocr:
-  engine: easyocr
+  engine: paddleocr
   languages:
     - en
+  use_angle_cls: true
   allowlist: "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
   min_confidence: 0.5

@@ -31,7 +31,7 @@ def run_pipeline(input_path: Path, config_path: Path) -> dict[str, Any]:
         input_path=input_path,
         perspective_result=perspective_result,
     )
-    lot_info = read_lot_information(analysis_views, label_detections)
+    lot_info = read_lot_information(analysis_views, label_detections, config_path=config_path)
     visualization = build_visualization_summary(
         book_count,
         anomalies,
