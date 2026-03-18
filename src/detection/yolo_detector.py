@@ -12,6 +12,8 @@ try:
 except ModuleNotFoundError:
     YOLO = None
 
+from src.utils.io import load_image
+
 
 def _load_yaml(path: Path) -> dict[str, Any]:
     with path.open("r", encoding="utf-8") as handle:
@@ -39,7 +41,7 @@ def _load_raw_image(image_context: dict[str, Any]) -> np.ndarray | None:
     if isinstance(input_path, str):
         path = Path(input_path)
         if path.is_file():
-            return cv2.imread(str(path))
+            return load_image(path)
 
     return None
 

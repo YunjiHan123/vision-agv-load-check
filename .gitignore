@@ -7,6 +7,7 @@ __pycache__/
 .venv/
 venv/
 env/
+*.cache
 
 # Generated data and intermediate artifacts
 data/raw/*
@@ -15,6 +16,11 @@ data/processed/*
 data/plots/*
 data/results.csv
 data/failure_cases.csv
+models/train_runs/
+*.pt
+*.onnx
+*.pth
+*.ckpt
 models/*.pt
 models/*.onnx
 models/*.pth
