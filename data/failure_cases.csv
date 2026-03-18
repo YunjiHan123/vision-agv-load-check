@@ -1,8 +1,0 @@
-image_name,true_count,pred_count,true_status,pred_status,true_lot,pred_lot,count_match,status_match,lot_match
-img_002.jpg,3,2,normal,normal,A10002,A10002,False,True,True
-img_003.jpg,4,4,normal,shifted,A10003,A10033,True,False,False
-img_004.jpg,5,5,normal,fallen,A10004,A10004,True,False,True
-img_006.jpg,4,5,tilted,shifted,A10006,A10006,False,False,True
-img_007.jpg,3,3,shifted,normal,A10007,A10007,True,False,True
-img_008.jpg,4,4,shifted,shifted,A10008,A10888,True,True,False
-img_009.jpg,2,1,fallen,normal,A10009,A10009,False,False,True

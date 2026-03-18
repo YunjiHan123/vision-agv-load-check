@@ -1,7 +1,7 @@
 model:
   task: detect
-  class_name: lot_label
-  weights: models/lot_label_yolo.pt
+  class_name: mini_box
+  weights: models/mini_box_yolo.pt
 
 inference:
   confidence_threshold: 0.5
