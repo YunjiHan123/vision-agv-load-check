@@ -1,6 +1,7 @@
 ocr:
   engine: paddleocr
-  paddle_fallback_to_easyocr: true
+  cache_root: C:/temp/book_lot_vision_cache
+  paddle_fallback_to_easyocr: false
   ocr_version: PP-OCRv4
   languages:
     - en

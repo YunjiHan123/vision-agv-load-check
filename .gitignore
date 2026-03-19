@@ -1,13 +1,20 @@
 __pycache__/
+**/__pycache__/
 *.py[cod]
 *.pyo
 .pytest_cache/
+.pytest-tmp/
+.pytest-tmp-run/
+.tmp/
+pytest-cache-files-*/
 .mypy_cache/
 .ruff_cache/
 .venv/
+.venv-*/
 venv/
 env/
 *.cache
+Ultralytics/
 
 # Generated data and intermediate artifacts
 data/raw/*

@@ -4,16 +4,14 @@ import csv
 from pathlib import Path
 import sys
 
-BASE_DIR = Path(__file__).resolve().parent.parent
-if str(BASE_DIR) not in sys.path:
-    sys.path.insert(0, str(BASE_DIR))
+ROOT_DIR = Path(__file__).resolve().parent.parent
+if str(ROOT_DIR) not in sys.path:
+    sys.path.insert(0, str(ROOT_DIR))
 
+from src.utils.project_paths import FAILURE_CSV, GROUND_TRUTH_CSV, PLOTS_DIR, RESULT_CSV
 from src.utils.status import normalize_status_label
 
-GT_CSV = BASE_DIR / "data" / "ground_truth.csv"
-RESULT_CSV = BASE_DIR / "data" / "results.csv"
-FAILURE_CSV = BASE_DIR / "data" / "failure_cases.csv"
-PLOT_DIR = BASE_DIR / "data" / "plots"
+GT_CSV = GROUND_TRUTH_CSV
 LOT_SEPARATOR = "|"
 
 
@@ -89,8 +87,8 @@ def save_metric_bar_chart(metric_values: dict[str, float]) -> Path:
     if plt is None:
         return Path("matplotlib not installed")
 
-    PLOT_DIR.mkdir(parents=True, exist_ok=True)
-    output_path = PLOT_DIR / "summary_metrics.png"
+    PLOTS_DIR.mkdir(parents=True, exist_ok=True)
+    output_path = PLOTS_DIR / "summary_metrics.png"
 
     labels = list(metric_values.keys())
     values = list(metric_values.values())
@@ -117,8 +115,8 @@ def save_status_accuracy_chart(status_accuracy_by_class: dict[str, float]) -> Pa
     if plt is None:
         return Path("matplotlib not installed")
 
-    PLOT_DIR.mkdir(parents=True, exist_ok=True)
-    output_path = PLOT_DIR / "status_accuracy.png"
+    PLOTS_DIR.mkdir(parents=True, exist_ok=True)
+    output_path = PLOTS_DIR / "status_accuracy.png"
 
     labels = list(status_accuracy_by_class.keys())
     values = list(status_accuracy_by_class.values())
@@ -144,8 +142,8 @@ def save_confusion_chart(tp: int, fp: int, fn: int, tn: int) -> Path:
     if plt is None:
         return Path("matplotlib not installed")
 
-    PLOT_DIR.mkdir(parents=True, exist_ok=True)
-    output_path = PLOT_DIR / "abnormal_confusion_counts.png"
+    PLOTS_DIR.mkdir(parents=True, exist_ok=True)
+    output_path = PLOTS_DIR / "abnormal_confusion_counts.png"
 
     labels = ["TP", "FP", "FN", "TN"]
     values = [tp, fp, fn, tn]
