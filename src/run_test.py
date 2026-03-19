@@ -5,42 +5,20 @@ import csv
 from pathlib import Path
 import sys
 
-
-BASE_DIR = Path(__file__).resolve().parent.parent
-if str(BASE_DIR) not in sys.path:
-    sys.path.insert(0, str(BASE_DIR))
+ROOT_DIR = Path(__file__).resolve().parent.parent
+if str(ROOT_DIR) not in sys.path:
+    sys.path.insert(0, str(ROOT_DIR))
 
 from src.vision_pipeline import process_image
 from src.utils.status import normalize_status_label
+from src.utils.lot_codes import LOT_POOL
+from src.utils.project_paths import GROUND_TRUTH_CSV, PIPELINE_CONFIG_PATH, RESULT_CSV, TEST_IMAGES_DIR
 
 
-IMAGE_DIR = BASE_DIR / "data" / "test_images"
-GT_CSV = BASE_DIR / "data" / "ground_truth.csv"
-RESULT_CSV = BASE_DIR / "data" / "results.csv"
-CONFIG_PATH = BASE_DIR / "configs" / "pipeline.yaml"
+IMAGE_DIR = TEST_IMAGES_DIR
+GT_CSV = GROUND_TRUTH_CSV
+CONFIG_PATH = PIPELINE_CONFIG_PATH
 IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".bmp"}
-LOT_POOL = [
-    "001A",
-    "001B",
-    "001C",
-    "001D",
-    "001E",
-    "002A",
-    "002B",
-    "002C",
-    "002D",
-    "002E",
-    "003A",
-    "003B",
-    "003C",
-    "003D",
-    "003E",
-    "004A",
-    "004B",
-    "004C",
-    "004D",
-    "004E",
-]
 
 
 def parse_args() -> argparse.Namespace:
@@ -50,6 +28,12 @@ def parse_args() -> argparse.Namespace:
         choices=("auto", "mock", "real"),
         default="auto",
         help="auto: use real images if present, otherwise use mock predictions.",
+    )
+    parser.add_argument(
+        "--config",
+        type=Path,
+        default=CONFIG_PATH,
+        help="Configuration file used for real pipeline inference.",
     )
     return parser.parse_args()
 
@@ -147,13 +131,13 @@ def generate_mock_results() -> int:
     return len(gt_rows)
 
 
-def generate_real_results(image_files: list[Path]) -> int:
+def generate_real_results(image_files: list[Path], config_path: Path = CONFIG_PATH) -> int:
     with RESULT_CSV.open("w", newline="", encoding="utf-8") as handle:
         writer = csv.writer(handle)
         writer.writerow(["image_name", "pred_count", "pred_status", "pred_lots"])
 
         for image_path in image_files:
-            result = process_image(image_path=image_path, config_path=CONFIG_PATH)
+            result = process_image(image_path=image_path, config_path=config_path)
             writer.writerow(
                 [
                     image_path.name,
@@ -184,7 +168,7 @@ def main() -> None:
         processed_count = generate_mock_results()
         print("mode: mock")
     else:
-        processed_count = generate_real_results(image_files)
+        processed_count = generate_real_results(image_files, config_path=args.config)
         print("mode: real")
 
     print(f"results.csv generated: {RESULT_CSV}")
