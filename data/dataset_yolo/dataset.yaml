@@ -1,0 +1,7 @@
+path: C:/Users/han/OneDrive/문서/my_vision_pjt2/book_lot_vision/data/dataset_yolo
+train: images/train
+val: images/val
+test: images/test
+
+names:
+  0: mini_box

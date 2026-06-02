@@ -4,3 +4,10 @@ ultralytics
 pyyaml
 easyocr
 pytest
+matplotlib
+fastapi
+uvicorn
+python-multipart
+httpx
+paddleocr==3.3.3; python_version < "3.14"
+paddlepaddle==3.2.0; python_version < "3.14"

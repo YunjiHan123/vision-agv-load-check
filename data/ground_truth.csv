@@ -1,0 +1,72 @@
+image_name,true_count,true_status,true_lots,condition,notes
+img_001.jpg,1,normal,"001A",clear,single book baseline
+img_002.jpg,2,normal,"001C|001D",clear,baseline
+img_003.jpg,3,normal,"001E|002A|002B",clear,baseline
+img_004.jpg,4,normal,"002B|002C|002D|002E",clear,baseline
+img_005.jpg,4,normal,"002D|002E|003A|003B",clear,baseline
+img_006.jpg,1,normal,"003A",clear,single book baseline
+img_007.jpg,2,normal,"003C|003D",clear,baseline
+img_008.jpg,3,normal,"003E|004A|004B",clear,baseline
+img_009.jpg,4,normal,"004B|004C|004D|004E",clear,baseline
+img_010.jpg,4,normal,"004D|004E|001A|001B",clear,baseline
+img_011.jpg,1,normal,"001B",clear,single book baseline
+img_012.jpg,2,normal,"002A|004D",clear,baseline
+img_013.jpg,3,normal,"003A|003B|004B",clear,baseline
+img_014.jpg,4,normal,"002A|002B|003B|003C",clear,baseline
+img_015.jpg,4,normal,"002A|004E|001B|003D",clear,baseline
+img_016.jpg,1,normal,"004E",clear,single book baseline
+img_017.jpg,2,normal,"001D|004D",clear,baseline
+img_018.jpg,3,normal,"002A|002E|001A",clear,baseline
+img_019.jpg,4,normal,"003A|004B|003E|004E",clear,baseline
+img_020.jpg,4,normal,"003E|004C|001D|004D",clear,baseline
+img_021.jpg,1,normal,"004C",blur,single book only
+img_022.jpg,2,normal,"003D|003E",blur,slight blur but aligned
+img_023.jpg,3,normal,"002E|001A|003C",blur,slight blur but aligned
+img_024.jpg,4,normal,"003E|003D|003C|003B",blur,slight blur but aligned
+img_025.jpg,4,normal,"003D|003E|004C|001D",blur,slight blur but aligned
+img_026.jpg,1,normal,"002A",glare,single book only
+img_027.jpg,2,normal,"002E|001A",glare,minor glare but readable
+img_028.jpg,3,normal,"001A|003C|002A",glare,minor glare but readable
+img_029.jpg,4,normal,"001E|001D|001C|001B",glare,minor glare but readable
+img_030.jpg,4,normal,"002A|004E|001B|003D",glare,minor glare but readable
+img_042.jpg,2,misaligned,"002A|004E",clear,one book tilted left
+img_043.jpg,3,misaligned,"002A|001D|001B",clear,one book tilted left
+img_044.jpg,4,misaligned,"001E|001D|001C|002E",clear,one book tilted left
+img_045.jpg,4,misaligned,"002A|004E|001B|003D",clear,one book tilted left
+img_047.jpg,2,misaligned,"001D|002A",clear,one book tilted right
+img_048.jpg,3,misaligned,"001D|003E|001E",clear,one book tilted right
+img_049.jpg,4,misaligned,"001D|003E|001E|003D",clear,one book tilted right
+img_050.jpg,4,misaligned,"004E|002D|002A|002E",clear,one book tilted right
+img_051.jpg,1,normal,"004E",clear,single book only
+img_052.jpg,2,misaligned,"004E|004A",clear,one book shifted left
+img_053.jpg,3,misaligned,"004E|004A|003D",clear,one book shifted left
+img_054.jpg,4,misaligned,"004E|004A|003D|004D",clear,one book shifted left
+img_055.jpg,4,misaligned,"001D|003E|003A|002E",clear,one book shifted left
+img_062.jpg,2,misaligned,"001D|004A",blur,tilted with slight blur
+img_063.jpg,3,misaligned,"001D|004A|002A",blur,tilted with slight blur
+img_064.jpg,4,misaligned,"001D|004A|002A|004C",blur,tilted with slight blur
+img_065.jpg,4,misaligned,"004E|003E|004E|001A",blur,tilted with slight blur
+img_067.jpg,2,misaligned,"004E|003E",partial_occlusion,shifted and label edge hidden
+img_068.jpg,3,misaligned,"004E|003E|004B",partial_occlusion,shifted and label edge hidden
+img_069.jpg,4,misaligned,"004E|003E|004B|003A",partial_occlusion,shifted and label edge hidden
+img_070.jpg,4,misaligned,"001D|004A|003C|003D",partial_occlusion,shifted and label edge hidden
+img_072.jpg,2,fallen,"001D|004A",clear,one book fallen forward
+img_073.jpg,3,fallen,"001D|004A|004B",clear,one book fallen forward
+img_074.jpg,4,fallen,"001D|004A|004B|002C",clear,one book fallen forward
+img_075.jpg,4,fallen,"004A|004C|004E|003C",clear,one book fallen forward
+img_077.jpg,2,fallen,"004E|004C",clear,one book fallen backward
+img_078.jpg,3,fallen,"004E|004C|004A",clear,one book fallen backward
+img_079.jpg,4,fallen,"004E|004C|004A|003C",clear,one book fallen backward
+img_080.jpg,4,fallen,"001D|003E|004B|004C",clear,one book fallen backward
+img_082.jpg,2,fallen,"004B|004C",clear,one book slipped downward
+img_083.jpg,3,fallen,"004B|004C|003A",clear,one book slipped downward
+img_084.jpg,4,fallen,"004B|004C|003A|004E",clear,one book slipped downward
+img_085.jpg,4,fallen,"002C|003C|001D|004E",clear,one book slipped downward
+img_087.jpg,2,fallen,"003C|001D",blur,fallen with slight blur
+img_088.jpg,3,fallen,"003C|001D|003B",blur,fallen with slight blur
+img_089.jpg,4,fallen,"003C|001D|003B|004A",blur,fallen with slight blur
+img_090.jpg,4,fallen,"002A|004B|003E|004E",blur,fallen with slight blur
+img_092.jpg,2,fallen,"002A|002D",glare,fallen with label glare
+img_093.jpg,3,fallen,"002A|002D|001B",glare,fallen with label glare
+img_094.jpg,4,fallen,"002A|002D|001B|003E",glare,fallen with label glare
+img_095.jpg,4,fallen,"001B|003B|002A|003E",glare,fallen with label glare

@@ -1,0 +1,12 @@
+numpy==1.26.4
+paddleocr==3.3.3
+paddlepaddle==3.2.0
+opencv-python
+pyyaml
+pytest
+ultralytics
+matplotlib
+fastapi
+uvicorn
+python-multipart
+httpx

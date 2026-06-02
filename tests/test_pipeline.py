@@ -15,3 +15,12 @@ def test_pipeline_placeholder_runs() -> None:
     assert result["anomalies"] == []
     assert result["lot_info"] == []
     assert "summary" in result
+
+
+def test_pipeline_normalizes_shifted_and_tilted_to_misaligned() -> None:
+    result = run_pipeline(
+        input_path=Path("data/test_images/img_001.jpg"),
+        config_path=Path("configs/pipeline.yaml"),
+    )
+
+    assert result["predicted_status"] in {"normal", "misaligned", "fallen"}

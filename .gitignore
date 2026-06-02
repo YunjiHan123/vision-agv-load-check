@@ -1,23 +1,44 @@
 __pycache__/
+**/__pycache__/
 *.py[cod]
 *.pyo
 .pytest_cache/
+.pytest-tmp/
+.pytest-tmp-run/
+.tmp/
+pytest-cache-files-*/
 .mypy_cache/
 .ruff_cache/
 .venv/
+.venv-*/
 venv/
 env/
+*.cache
+Ultralytics/
 
+# Generated data and intermediate artifacts
 data/raw/*
 data/interim/*
 data/processed/*
+data/plots/*
+data/results.csv
+data/failure_cases.csv
+models/train_runs/
+*.pt
+*.onnx
+*.pth
+*.ckpt
 models/*.pt
 models/*.onnx
 models/*.pth
 models/*.ckpt
 
+# Keep shared fixtures and directory placeholders under version control
 !data/raw/.gitkeep
 !data/interim/.gitkeep
 !data/processed/.gitkeep
 !data/samples/.gitkeep
+!data/ground_truth.csv
+!data/test_images/
+!data/test_images/**
 !models/.gitkeep
